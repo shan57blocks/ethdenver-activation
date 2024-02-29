@@ -23,7 +23,7 @@ export async function GET(
   const highlightId = params.highlight_id;
   const response = await queryChaptersAfterID({
     from_chapter_id: 0,
-    limit: 100000,
+    limit: 1000,
   });
 
   /**
