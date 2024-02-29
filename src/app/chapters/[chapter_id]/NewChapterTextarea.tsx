@@ -13,10 +13,12 @@ export default function NewChapterTextarea({
   isLoading,
   onSubmit,
   maxLength = 280,
+  minLength = 5,
 }: {
   isLoading: boolean;
   onSubmit: (context: string) => void;
   maxLength?: number;
+  minLength?: number;
 }) {
   const [newContent, setNewContent] = useState("");
 
@@ -26,6 +28,7 @@ export default function NewChapterTextarea({
 
   const length = newContent.length;
   const isOverLimit = length > maxLength;
+  const isUnderLimit = length < minLength;
 
   return (
     <>
@@ -60,7 +63,7 @@ export default function NewChapterTextarea({
           <Button
             className={"select-none space-x-1"}
             onClick={() => onSubmit(newContent)}
-            disabled={!length || isLoading || isOverLimit}
+            disabled={!length || isLoading || isOverLimit || isUnderLimit}
           >
             <span>Submit</span>
             <Image
