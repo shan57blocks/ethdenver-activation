@@ -49,9 +49,11 @@ export async function GET(
     family: "Roboto",
   });
   const chart = init(canvas as unknown as HTMLElement);
-  const chartData = generateChartData(
-    response.chapters.slice(0, 250).concat(response.chapters.slice(-250)),
-  );
+  const chapters =
+    response.chapters.length > 500
+      ? response.chapters.slice(0, 250).concat(response.chapters.slice(-250))
+      : response.chapters;
+  const chartData = generateChartData(chapters);
   const chartOptions = generateChartOption({
     chartData,
     highlightId,
