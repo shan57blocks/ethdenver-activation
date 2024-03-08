@@ -22,6 +22,16 @@ export interface Chapter {
   child_count: number;
 }
 
+/**
+ * @description transforms a `ChapterMO` object into a `Chapter` object, with necessary
+ * properties for further manipulation or serialization.
+ * 
+ * @param { ChapterMO } chapter - ChapterMO object to be transformed into a new Chapter
+ * object with updated properties.
+ * 
+ * @returns { Chapter } a Chapter object with the same properties as the input ChapterMO
+ * object.
+ */
 export function toChapter(chapter: ChapterMO): Chapter {
   return {
     id: chapter.id,
